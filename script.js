@@ -1,100 +1,235 @@
 const photos = [
-  "images/photo1.png",
-  "images/photo2.png",
-  "images/photo3.png",
-  "images/photo4.png",
-  "images/photo5.png",
-  "images/photo6.jpg",
-  "images/photo7.jpg",
-  "images/photo8.jpg",
-  "images/photo9.jpg"
+    "images/photo1.png",
+    "images/photo2.png",
+    "images/photo3.png",
+    "images/photo4.png",
+    "images/photo5.png",
+    "images/photo6.jpg",
+    "images/photo7.jpg",
+    "images/photo8.jpg",
+    "images/photo9.jpg"
 ];
 
 const monthNames = [
-  "January","February","March","April",
-  "May","June","July","August",
-  "September","October","November","December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
 ];
 
 let currentDate = new Date();
 
-async function loadQuotes() {
-  const response = await fetch("quotes.json");
-  return await response.json();
+/* ----------------------- */
+/* PHOTO ASSIGNMENT */
+/* ----------------------- */
+
+function getMonthPhoto(month) {
+
+    let savedMap =
+        JSON.parse(localStorage.getItem("monthPhotoMap")) || {};
+
+    if (!savedMap[month]) {
+
+        const randomPhoto =
+            photos[Math.floor(Math.random() * photos.length)];
+
+        savedMap[month] = randomPhoto;
+
+        localStorage.setItem(
+            "monthPhotoMap",
+            JSON.stringify(savedMap)
+        );
+    }
+
+    return savedMap[month];
 }
 
-function getPhotoForMonth(month) {
-  return photos[month % photos.length];
+/* ----------------------- */
+/* QUOTES */
+/* ----------------------- */
+
+async function loadQuotes() {
+
+    const response =
+        await fetch("quotes.json");
+
+    return await response.json();
 }
+
+/* ----------------------- */
+/* BACKGROUND */
+/* ----------------------- */
+
+function updateBackground(month) {
+
+    const bg =
+        document.getElementById("background");
+
+    bg.style.opacity = 0;
+
+    setTimeout(() => {
+
+        bg.style.backgroundImage =
+            `url(${getMonthPhoto(month)})`;
+
+        bg.style.opacity = 1;
+
+    }, 250);
+}
+
+/* ----------------------- */
+/* CALENDAR */
+/* ----------------------- */
 
 function renderCalendar(date, quotes) {
 
-  const month = date.getMonth();
-  const year = date.getFullYear();
+    const month =
+        date.getMonth();
 
-  document.getElementById("monthYear").textContent =
-    `${monthNames[month]} ${year}`;
+    const year =
+        date.getFullYear();
 
-  document.getElementById("background").style.backgroundImage =
-    `url(${getPhotoForMonth(month)})`;
+    document.getElementById("monthYear").textContent =
+        `${monthNames[month]} ${year}`;
 
-  document.getElementById("quote").textContent =
-    quotes[month % quotes.length];
+    updateBackground(month);
 
-  const calendar = document.getElementById("calendar");
-  calendar.innerHTML = "";
+    const quoteElement =
+        document.getElementById("quote");
 
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const authorElement =
+        document.getElementById("author");
 
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement("div");
-    calendar.appendChild(empty);
-  }
+    const quoteData =
+        quotes[month % quotes.length];
 
-  const today = new Date();
+    if (typeof quoteData === "object") {
 
-  for (let day = 1; day <= daysInMonth; day++) {
+        quoteElement.textContent =
+            `"${quoteData.quote}"`;
 
-    const div = document.createElement("div");
-    div.classList.add("date");
-    div.textContent = day;
+        authorElement.textContent =
+            quoteData.author;
 
-    if (
-      day === today.getDate() &&
-      month === today.getMonth() &&
-      year === today.getFullYear()
-    ) {
-      div.classList.add("today");
+    } else {
+
+        quoteElement.textContent =
+            quoteData;
+
+        authorElement.textContent =
+            "";
     }
 
-    calendar.appendChild(div);
-  }
+    const calendar =
+        document.getElementById("calendar");
+
+    calendar.innerHTML = "";
+
+    const firstDay =
+        new Date(year, month, 1).getDay();
+
+    const daysInMonth =
+        new Date(year, month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+
+        const empty =
+            document.createElement("div");
+
+        calendar.appendChild(empty);
+    }
+
+    const today =
+        new Date();
+
+    for (let day = 1; day <= daysInMonth; day++) {
+
+        const div =
+            document.createElement("div");
+
+        div.classList.add("date");
+
+        div.textContent = day;
+
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+            div.classList.add("today");
+        }
+
+        calendar.appendChild(div);
+    }
 }
 
+/* ----------------------- */
+/* SWIPE */
+/* ----------------------- */
+
+function enableSwipe(quotes) {
+
+    let startX = 0;
+
+    document.addEventListener(
+        "touchstart",
+        e => {
+            startX =
+                e.touches[0].clientX;
+        }
+    );
+
+    document.addEventListener(
+        "touchend",
+        e => {
+
+            const endX =
+                e.changedTouches[0].clientX;
+
+            const diff =
+                startX - endX;
+
+            if (Math.abs(diff) < 60) return;
+
+            if (diff > 0) {
+
+                currentDate.setMonth(
+                    currentDate.getMonth() + 1
+                );
+
+            } else {
+
+                currentDate.setMonth(
+                    currentDate.getMonth() - 1
+                );
+            }
+
+            renderCalendar(
+                currentDate,
+                quotes
+            );
+        }
+    );
+}
+
+/* ----------------------- */
+/* INIT */
+/* ----------------------- */
+
 loadQuotes().then(quotes => {
-  renderCalendar(currentDate, quotes);
 
-  let startX = 0;
+    renderCalendar(
+        currentDate,
+        quotes
+    );
 
-  document.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  document.addEventListener("touchend", e => {
-
-    let endX = e.changedTouches[0].clientX;
-    let diff = startX - endX;
-
-    if (Math.abs(diff) > 50) {
-
-      if (diff > 0) {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-      } else {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-      }
-
-      renderCalendar(currentDate, quotes);
-    }
-  });
+    enableSwipe(quotes);
 });
