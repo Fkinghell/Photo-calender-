@@ -1,34 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Calendar</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Calendar</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="background"></div>
+    <!-- Background Photo -->
+    <div id="background"></div>
 
-<div class="calendar-container">
-  <h1 id="monthYear"></h1>
+    <!-- Dark Cinematic Overlay -->
+    <div id="overlay"></div>
 
-  <div class="days">
-    <div>Sun</div>
-    <div>Mon</div>
-    <div>Tue</div>
-    <div>Wed</div>
-    <div>Thu</div>
-    <div>Fri</div>
-    <div>Sat</div>
-  </div>
+    <!-- Main Content -->
+    <main class="app">
 
-  <div id="calendar"></div>
+        <!-- Month Header -->
+        <div class="month-wrapper glass">
+            <h1 id="monthYear">June 2026</h1>
+        </div>
 
-  <div id="quote"></div>
-</div>
+        <!-- Calendar -->
+        <section class="calendar-section">
 
-<script src="script.js"></script>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+
+            <div id="calendar"></div>
+
+        </section>
+
+        <!-- Quote Area -->
+        <div class="quote-wrapper glass">
+
+            <p id="quote">
+                The obstacle is the way.
+            </p>
+
+            <span id="author">
+                Marcus Aurelius
+            </span>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
