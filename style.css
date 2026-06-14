@@ -26,7 +26,7 @@ body{
     animation:zoomBackground 45s ease-in-out infinite alternate;
 }
 
-/* LIGHTER OVERLAY */
+/* DREAMY OVERLAY */
 
 #overlay{
     position:fixed;
@@ -35,9 +35,9 @@ body{
     background:
     linear-gradient(
         to bottom,
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.05),
-        rgba(0,0,0,.20)
+        rgba(255,192,203,.04),
+        rgba(255,255,255,.02),
+        rgba(0,0,0,.10)
     );
 
     z-index:-2;
@@ -57,39 +57,64 @@ body{
     padding:16px;
 }
 
-/* SUBTLE GLASS */
+/* MODERN GLASS */
 
 .glass{
-    background:rgba(255,255,255,.03);
 
-    backdrop-filter:blur(4px);
-    -webkit-backdrop-filter:blur(4px);
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.10),
+        rgba(255,255,255,.03)
+    );
 
-    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
 
-    border-radius:24px;
+    border:1px solid rgba(255,255,255,.22);
+
+    border-radius:28px;
 
     box-shadow:
-    0 4px 20px rgba(0,0,0,.12);
+    0 8px 24px rgba(0,0,0,.10),
+    inset 0 1px 1px rgba(255,255,255,.20);
 }
 
 /* MONTH */
 
 .month-wrapper{
-    padding:12px 24px;
 
-    margin-bottom:14px;
+    padding:14px 30px;
 
-    animation:floatPanel 8s ease-in-out infinite;
+    margin-bottom:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,182,193,.18),
+        rgba(255,255,255,.05)
+    );
+
+    border:1px solid rgba(255,255,255,.28);
+
+    border-radius:28px;
+
+    box-shadow:
+    0 0 25px rgba(255,182,193,.18);
+
+    animation:
+    floatPanel 8s ease-in-out infinite;
 }
 
 #monthYear{
+
     font-size:2rem;
     font-weight:300;
     letter-spacing:1px;
 
     text-shadow:
-    0 2px 12px rgba(0,0,0,.5);
+    0 0 15px rgba(255,182,193,.35),
+    0 2px 8px rgba(0,0,0,.35);
 }
 
 /* CALENDAR */
@@ -99,16 +124,24 @@ body{
     width:100%;
     max-width:700px;
 
-    background:rgba(255,255,255,.025);
+    padding:20px;
 
-    backdrop-filter:blur(3px);
-    -webkit-backdrop-filter:blur(3px);
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.02)
+    );
 
-    border:1px solid rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.15);
 
-    border-radius:24px;
+    border-radius:28px;
 
-    padding:18px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
 }
 
 .weekdays,
@@ -127,7 +160,7 @@ body{
     font-weight:600;
 
     text-shadow:
-    0 2px 8px rgba(0,0,0,.5);
+    0 2px 8px rgba(0,0,0,.45);
 }
 
 .weekdays div{
@@ -141,7 +174,7 @@ body{
     font-size:1.05rem;
 
     text-shadow:
-    0 2px 6px rgba(0,0,0,.6);
+    0 2px 6px rgba(0,0,0,.5);
 }
 
 /* TODAY */
@@ -149,7 +182,6 @@ body{
 .today{
 
     position:relative;
-
     font-weight:700;
 }
 
@@ -179,12 +211,12 @@ body{
 
 .quote-wrapper{
 
-    margin-top:16px;
+    margin-top:18px;
 
-    padding-top:14px;
+    padding-top:16px;
 
     border-top:
-    1px solid rgba(255,255,255,.12);
+    1px solid rgba(255,255,255,.10);
 
     text-align:center;
 }
@@ -193,12 +225,12 @@ body{
 
     font-size:1rem;
 
+    line-height:1.7;
+
     font-style:italic;
 
-    line-height:1.6;
-
     text-shadow:
-    0 2px 8px rgba(0,0,0,.4);
+    0 2px 8px rgba(0,0,0,.35);
 }
 
 #author{
@@ -220,8 +252,8 @@ body{
 
     position:fixed;
 
-    width:3px;
-    height:3px;
+    width:4px;
+    height:4px;
 
     background:white;
 
@@ -229,9 +261,10 @@ body{
 
     z-index:-1;
 
-    opacity:.5;
+    box-shadow:
+    0 0 10px white;
 
-    animation:twinkle 4s infinite alternate;
+    animation:twinkle 5s infinite alternate;
 }
 
 .star1{
@@ -255,13 +288,16 @@ body{
 
     position:fixed;
 
-    color:rgba(255,255,255,.35);
+    color:rgba(255,182,193,.40);
 
-    font-size:12px;
+    font-size:16px;
 
     pointer-events:none;
 
     z-index:1;
+
+    filter:
+    drop-shadow(0 0 6px rgba(255,182,193,.4));
 }
 
 .butterfly1{
@@ -308,7 +344,7 @@ body{
     }
 
     to{
-        opacity:.7;
+        opacity:.8;
     }
 }
 
@@ -319,7 +355,7 @@ body{
     }
 
     50%{
-        transform:translateY(-3px);
+        transform:translateY(-4px);
     }
 }
 
