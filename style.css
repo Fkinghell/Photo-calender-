@@ -1,75 +1,228 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-  color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* FULLSCREEN PHOTO */
 
 #background {
-  position: fixed;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 0.8s ease;
-  animation: zoomEffect 30s infinite alternate;
+    position: fixed;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -2;
+
+    animation: slowZoom 40s ease-in-out infinite alternate;
+    transition: background-image 0.8s ease;
 }
 
-.calendar-container {
-  position: relative;
-  z-index: 2;
-  margin: 40px auto;
-  width: 90%;
-  max-width: 500px;
-  padding: 20px;
+/* CINEMATIC OVERLAY */
 
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+#overlay {
+    position: fixed;
+    inset: 0;
 
-  border-radius: 25px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.55)
+        );
+
+    z-index: -1;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+/* MAIN APP */
+
+.app {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 24px 18px 30px;
 }
 
-.days,
+/* GLASS */
+
+.glass {
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* MONTH */
+
+.month-wrapper {
+    align-self: center;
+
+    padding: 12px 24px;
+
+    animation: fadeIn 1s ease;
+}
+
+#monthYear {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* CALENDAR */
+
+.calendar-section {
+    width: 100%;
+}
+
+.weekdays,
 #calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  text-align: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    text-align: center;
 }
 
-.days {
-  font-weight: bold;
-  margin-bottom: 10px;
+.weekdays {
+    margin-bottom: 18px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.weekdays div {
+    padding: 8px 0;
 }
 
 .date {
-  padding: 10px;
-  border-radius: 10px;
+    padding: 14px 0;
+
+    font-size: 1rem;
+
+    transition: all .25s ease;
 }
 
+/* TODAY */
+
 .today {
-  background: rgba(255,255,255,0.35);
-  font-weight: bold;
+    position: relative;
+
+    font-weight: 700;
+}
+
+.today::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 6px;
+
+    transform: translateX(-50%);
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.8);
+}
+
+/* QUOTE */
+
+.quote-wrapper {
+    padding: 18px;
+
+    text-align: center;
+
+    animation: fadeIn 1s ease;
 }
 
 #quote {
-  margin-top: 25px;
-  text-align: center;
-  font-style: italic;
-  line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    font-style: italic;
 }
 
-@keyframes zoomEffect {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
+#author {
+    display: block;
+
+    margin-top: 10px;
+
+    opacity: 0.85;
+
+    font-size: .95rem;
+
+    letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+
+@keyframes slowZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLET */
+
+@media (min-width: 768px) {
+
+    #monthYear {
+        font-size: 2.8rem;
+    }
+
+    .date {
+        padding: 18px 0;
+        font-size: 1.2rem;
+    }
+
+    #quote {
+        font-size: 1.3rem;
+    }
 }
