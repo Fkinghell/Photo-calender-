@@ -297,45 +297,116 @@ body {
     left: 75%;
 }
 
-/* BUTTERFLIES */
+/* BUTTERFLIES - FLYING */
 
 .butterfly {
     position: fixed;
 
-    color: var(--pink-light);
-
-    font-size: 16px;
+    font-size: 28px;
 
     pointer-events: none;
 
     z-index: 1;
 
-    filter: drop-shadow(0 0 6px var(--pink-light));
+    filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.6));
     will-change: transform;
 }
 
 .butterfly1 {
     top: 20%;
     left: 8%;
-    animation: fly1 18s infinite alternate ease-in-out;
+    animation: flyButterly1 15s infinite ease-in-out;
 }
 
 .butterfly2 {
     top: 55%;
     right: 10%;
-    animation: fly2 24s infinite alternate ease-in-out;
+    animation: flyButterly2 18s infinite ease-in-out;
 }
 
 .butterfly3 {
     top: 75%;
     left: 15%;
-    animation: fly3 20s infinite alternate ease-in-out;
+    animation: flyButterly3 16s infinite ease-in-out;
 }
 
 .butterfly4 {
     top: 30%;
     right: 25%;
-    animation: fly4 26s infinite alternate ease-in-out;
+    animation: flyButterly4 20s infinite ease-in-out;
+}
+
+/* PUPPIES - RUNNING */
+
+.puppy {
+    position: fixed;
+
+    font-size: 32px;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    filter: drop-shadow(0 0 6px rgba(200, 150, 100, 0.5));
+    will-change: transform;
+}
+
+.puppy1 {
+    bottom: 15%;
+    left: 5%;
+    animation: runPuppy1 12s infinite ease-in-out;
+}
+
+.puppy2 {
+    bottom: 25%;
+    right: 8%;
+    animation: runPuppy2 14s infinite ease-in-out;
+}
+
+.puppy3 {
+    bottom: 35%;
+    left: 20%;
+    animation: runPuppy3 16s infinite ease-in-out;
+}
+
+/* HEARTS - BLUSHING */
+
+.heart {
+    position: fixed;
+
+    font-size: 24px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation: blushingHeart 4s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.8));
+    will-change: transform, opacity;
+}
+
+.heart1 {
+    top: 10%;
+    left: 35%;
+    animation: blushingHeart 4s infinite ease-in-out;
+}
+
+.heart2 {
+    top: 65%;
+    right: 20%;
+    animation: blushingHeart 5s infinite ease-in-out 0.5s;
+}
+
+.heart3 {
+    top: 50%;
+    left: 8%;
+    animation: blushingHeart 4.5s infinite ease-in-out 1s;
+}
+
+.heart4 {
+    top: 80%;
+    right: 30%;
+    animation: blushingHeart 5.5s infinite ease-in-out 1.5s;
 }
 
 /* ANIMATIONS */
@@ -382,39 +453,145 @@ body {
     }
 }
 
-@keyframes fly1 {
-    from {
-        transform: translate(0, 0) rotate(0deg);
+/* BUTTERFLY FLYING ANIMATIONS */
+
+@keyframes flyButterly1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
-    to {
-        transform: translate(50px, -25px) rotate(15deg);
+    25% {
+        transform: translate(80px, -40px) rotate(25deg) scale(1.1);
+    }
+    50% {
+        transform: translate(100px, 0) rotate(0deg) scale(1);
+    }
+    75% {
+        transform: translate(60px, 40px) rotate(-25deg) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
 }
 
-@keyframes fly2 {
-    from {
-        transform: translate(0, 0) rotate(0deg);
+@keyframes flyButterly2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
-    to {
-        transform: translate(-40px, 20px) rotate(-12deg);
+    25% {
+        transform: translate(-60px, -50px) rotate(-30deg) scale(1.1);
+    }
+    50% {
+        transform: translate(-90px, 0) rotate(0deg) scale(1);
+    }
+    75% {
+        transform: translate(-50px, 50px) rotate(30deg) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
 }
 
-@keyframes fly3 {
-    from {
-        transform: translate(0, 0) rotate(0deg);
+@keyframes flyButterly3 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
-    to {
-        transform: translate(60px, -20px) rotate(18deg);
+    25% {
+        transform: translate(75px, -35px) rotate(20deg) scale(1.1);
+    }
+    50% {
+        transform: translate(95px, 5px) rotate(0deg) scale(1);
+    }
+    75% {
+        transform: translate(55px, 35px) rotate(-20deg) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
 }
 
-@keyframes fly4 {
-    from {
-        transform: translate(0, 0) rotate(0deg);
+@keyframes flyButterly4 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
-    to {
-        transform: translate(-35px, -25px) rotate(-15deg);
+    25% {
+        transform: translate(-70px, -45px) rotate(-28deg) scale(1.1);
+    }
+    50% {
+        transform: translate(-100px, 0) rotate(0deg) scale(1);
+    }
+    75% {
+        transform: translate(-60px, 45px) rotate(28deg) scale(1.1);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+/* PUPPY RUNNING ANIMATIONS */
+
+@keyframes runPuppy1 {
+    0%, 100% {
+        transform: translateX(0) scaleX(1);
+    }
+    25% {
+        transform: translateX(150px) scaleX(1);
+    }
+    50% {
+        transform: translateX(300px) scaleX(1);
+    }
+    75% {
+        transform: translateX(150px) scaleX(1);
+    }
+}
+
+@keyframes runPuppy2 {
+    0%, 100% {
+        transform: translateX(0) scaleX(-1);
+    }
+    25% {
+        transform: translateX(-120px) scaleX(-1);
+    }
+    50% {
+        transform: translateX(-240px) scaleX(-1);
+    }
+    75% {
+        transform: translateX(-120px) scaleX(-1);
+    }
+}
+
+@keyframes runPuppy3 {
+    0%, 100% {
+        transform: translateX(0) scaleX(1);
+    }
+    25% {
+        transform: translateX(140px) scaleX(1);
+    }
+    50% {
+        transform: translateX(280px) scaleX(1);
+    }
+    75% {
+        transform: translateX(140px) scaleX(1);
+    }
+}
+
+/* BLUSHING HEARTS ANIMATION */
+
+@keyframes blushingHeart {
+    0%, 100% {
+        transform: translate(0, 0) scale(0.8);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(20px, -30px) scale(1.1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(0, -60px) scale(1.2);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translate(-20px, -30px) scale(1.1);
+        opacity: 1;
     }
 }
 
@@ -429,5 +606,17 @@ body {
 
     #quote {
         font-size: 1.15rem;
+    }
+
+    .butterfly {
+        font-size: 36px;
+    }
+
+    .puppy {
+        font-size: 40px;
+    }
+
+    .heart {
+        font-size: 32px;
     }
 }
