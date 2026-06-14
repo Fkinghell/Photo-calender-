@@ -7,7 +7,6 @@
 body{
     font-family: "Segoe UI", sans-serif;
     color:white;
-    height:100vh;
     overflow:hidden;
 }
 
@@ -19,6 +18,7 @@ body{
 
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
 
     z-index:-2;
 
@@ -35,51 +35,44 @@ body{
     background:
     linear-gradient(
         to bottom,
-        rgba(0,0,0,.40),
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.55)
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.60)
     );
 
     z-index:-1;
 }
 
-/* MAIN LAYOUT */
+/* APP */
 
 .app{
     min-height:100vh;
 
     display:flex;
     flex-direction:column;
-
     align-items:center;
 
-    padding-top:24px;
-    padding-left:18px;
-    padding-right:18px;
+    padding:24px 16px;
 }
 
-/* GLASS EFFECT */
+/* GLASS */
 
 .glass{
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    border:1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.20);
+    border:1px solid rgba(255,255,255,.15);
 
     border-radius:24px;
 }
 
-/* MONTH HEADER */
+/* MONTH */
 
 .month-wrapper{
-    padding:12px 26px;
-
-    margin-bottom:24px;
+    padding:12px 24px;
+    margin-bottom:20px;
 }
 
 #monthYear{
@@ -88,12 +81,26 @@ body{
     letter-spacing:1px;
 }
 
-/* CALENDAR */
+/* CALENDAR AREA */
 
 .calendar-section{
+
     width:100%;
     max-width:700px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    padding:18px;
 }
+
+/* WEEKDAYS */
 
 .weekdays,
 #calendar{
@@ -104,7 +111,8 @@ body{
 }
 
 .weekdays{
-    margin-bottom:14px;
+
+    margin-bottom:12px;
 
     font-weight:600;
 
@@ -116,17 +124,10 @@ body{
     padding:8px 0;
 }
 
-#calendar{
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(10px);
-
-    border-radius:24px;
-
-    padding:12px;
-}
+/* DATES */
 
 .date{
+
     padding:14px 0;
 
     font-size:1.05rem;
@@ -161,26 +162,26 @@ body{
     background:white;
 
     box-shadow:
-    0 0 12px rgba(255,255,255,.9);
+    0 0 14px rgba(255,255,255,.9);
 }
 
 /* QUOTE */
 
 .quote-wrapper{
 
-    margin-top:22px;
+    margin-top:18px;
 
-    width:100%;
-    max-width:700px;
+    padding-top:18px;
 
-    padding:18px 22px;
+    border-top:
+    1px solid rgba(255,255,255,.15);
 
     text-align:center;
 }
 
 #quote{
 
-    font-size:1.1rem;
+    font-size:1.05rem;
 
     line-height:1.6;
 
@@ -194,16 +195,16 @@ body{
 
     display:block;
 
-    margin-top:12px;
-
-    font-size:.95rem;
+    margin-top:10px;
 
     opacity:.85;
+
+    font-size:.95rem;
 
     letter-spacing:1px;
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 
 @keyframes zoomBackground{
 
@@ -230,6 +231,6 @@ body{
     }
 
     #quote{
-        font-size:1.3rem;
+        font-size:1.25rem;
     }
 }
