@@ -28,6 +28,19 @@ const monthNames = [
 let currentDate = new Date();
 
 /* ----------------------- */
+/* SHUFFLE ARRAY */
+/* ----------------------- */
+
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+/* ----------------------- */
 /* PHOTO ASSIGNMENT */
 /* ----------------------- */
 
@@ -38,11 +51,21 @@ function getMonthPhoto(month) {
 
     if (!savedMap[month]) {
 
-        // Randomly assign a photo to this month
-        const randomIndex = Math.floor(Math.random() * photos.length);
-        const randomPhoto = photos[randomIndex];
+        // Get or create shuffled photo list
+        let shuffledPhotos =
+            JSON.parse(localStorage.getItem("shuffledPhotos")) || shuffleArray(photos);
 
-        savedMap[month] = randomPhoto;
+        // Assign photo to month
+        const photoIndex = month % shuffledPhotos.length;
+        const assignedPhoto = shuffledPhotos[photoIndex];
+
+        savedMap[month] = assignedPhoto;
+
+        // Save shuffled list for consistency
+        localStorage.setItem(
+            "shuffledPhotos",
+            JSON.stringify(shuffledPhotos)
+        );
 
         localStorage.setItem(
             "monthPhotoMap",
