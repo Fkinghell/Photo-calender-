@@ -1,3 +1,4 @@
+```css
 *{
     margin:0;
     padding:0;
@@ -5,7 +6,7 @@
 }
 
 body{
-    font-family: "Segoe UI", sans-serif;
+    font-family:"Segoe UI",sans-serif;
     color:white;
     overflow:hidden;
 }
@@ -18,15 +19,11 @@ body{
 
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
 
-    z-index:-2;
+    z-index:-3;
 
-    animation:zoomBackground 40s ease-in-out infinite alternate;
-    transition:all .8s ease;
+    animation:zoomBackground 35s ease-in-out infinite alternate;
 }
-
-/* CINEMATIC OVERLAY */
 
 #overlay{
     position:fixed;
@@ -35,75 +32,77 @@ body{
     background:
     linear-gradient(
         to bottom,
-        rgba(0,0,0,.45),
-        rgba(0,0,0,.20),
-        rgba(0,0,0,.60)
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.45)
     );
 
-    z-index:-1;
+    z-index:-2;
 }
 
 /* APP */
 
 .app{
+
     min-height:100vh;
 
     display:flex;
     flex-direction:column;
+
+    justify-content:center;
     align-items:center;
 
-    padding:24px 16px;
+    padding:20px;
 }
 
 /* GLASS */
 
 .glass{
+
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.18);
 
-    border-radius:24px;
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.25);
+
+    border-radius:28px;
 }
 
 /* MONTH */
 
 .month-wrapper{
-    padding:12px 24px;
-    margin-bottom:20px;
+
+    padding:14px 28px;
+
+    margin-bottom:18px;
+
+    animation:floatPanel 6s ease-in-out infinite;
 }
 
 #monthYear{
+
     font-size:2rem;
     font-weight:300;
     letter-spacing:1px;
 }
 
-/* CALENDAR AREA */
+/* CALENDAR */
 
 .calendar-section{
 
     width:100%;
     max-width:700px;
 
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:28px;
-
-    padding:18px;
+    padding:20px;
 }
-
-/* WEEKDAYS */
 
 .weekdays,
 #calendar{
+
     display:grid;
     grid-template-columns:repeat(7,1fr);
 
@@ -112,19 +111,14 @@ body{
 
 .weekdays{
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 
     font-weight:600;
-
-    text-shadow:
-    0 2px 10px rgba(0,0,0,.6);
 }
 
 .weekdays div{
     padding:8px 0;
 }
-
-/* DATES */
 
 .date{
 
@@ -136,9 +130,8 @@ body{
     0 2px 8px rgba(0,0,0,.8);
 }
 
-/* TODAY */
-
 .today{
+
     position:relative;
     font-weight:700;
 }
@@ -149,20 +142,20 @@ body{
 
     position:absolute;
 
-    left:50%;
-    bottom:6px;
-
-    transform:translateX(-50%);
-
-    width:7px;
-    height:7px;
+    width:8px;
+    height:8px;
 
     border-radius:50%;
 
     background:white;
 
+    left:50%;
+    bottom:4px;
+
+    transform:translateX(-50%);
+
     box-shadow:
-    0 0 14px rgba(255,255,255,.9);
+    0 0 10px white;
 }
 
 /* QUOTE */
@@ -183,12 +176,9 @@ body{
 
     font-size:1.05rem;
 
-    line-height:1.6;
-
     font-style:italic;
 
-    text-shadow:
-    0 2px 10px rgba(0,0,0,.6);
+    line-height:1.6;
 }
 
 #author{
@@ -199,12 +189,82 @@ body{
 
     opacity:.85;
 
-    font-size:.95rem;
-
     letter-spacing:1px;
 }
 
-/* ANIMATION */
+/* STARS */
+
+.star{
+
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    background:white;
+
+    border-radius:50%;
+
+    z-index:-1;
+
+    animation:twinkle 3s infinite alternate;
+}
+
+.star1{
+    top:12%;
+    left:18%;
+}
+
+.star2{
+    top:22%;
+    right:15%;
+}
+
+.star3{
+    top:35%;
+    left:75%;
+}
+
+/* BUTTERFLIES */
+
+.butterfly{
+
+    position:fixed;
+
+    color:rgba(255,255,255,.6);
+
+    font-size:14px;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+.butterfly1{
+    top:20%;
+    left:8%;
+    animation:fly1 16s infinite alternate;
+}
+
+.butterfly2{
+    top:55%;
+    right:10%;
+    animation:fly2 20s infinite alternate;
+}
+
+.butterfly3{
+    top:75%;
+    left:15%;
+    animation:fly3 18s infinite alternate;
+}
+
+.butterfly4{
+    top:30%;
+    right:25%;
+    animation:fly4 22s infinite alternate;
+}
+
+/* ANIMATIONS */
 
 @keyframes zoomBackground{
 
@@ -213,24 +273,49 @@ body{
     }
 
     to{
-        transform:scale(1.08);
+        transform:scale(1.05);
     }
 }
 
-/* TABLET */
+@keyframes twinkle{
 
-@media (min-width:768px){
-
-    #monthYear{
-        font-size:2.8rem;
+    from{
+        opacity:.2;
     }
 
-    .date{
-        font-size:1.25rem;
-        padding:18px 0;
-    }
-
-    #quote{
-        font-size:1.25rem;
+    to{
+        opacity:.8;
     }
 }
+
+@keyframes floatPanel{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+}
+
+@keyframes fly1{
+    from{transform:translate(0,0);}
+    to{transform:translate(50px,-30px);}
+}
+
+@keyframes fly2{
+    from{transform:translate(0,0);}
+    to{transform:translate(-40px,25px);}
+}
+
+@keyframes fly3{
+    from{transform:translate(0,0);}
+    to{transform:translate(60px,-20px);}
+}
+
+@keyframes fly4{
+    from{transform:translate(0,0);}
+    to{transform:translate(-35px,-25px);}
+}
+```
