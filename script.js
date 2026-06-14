@@ -38,11 +38,11 @@ function getMonthPhoto(month) {
 
     if (!savedMap[month]) {
 
-        // Use sequential assignment: each month gets the next photo in sequence
-        const photoIndex = month % photos.length;
-        const sequentialPhoto = photos[photoIndex];
+        // Randomly assign a photo to this month
+        const randomIndex = Math.floor(Math.random() * photos.length);
+        const randomPhoto = photos[randomIndex];
 
-        savedMap[month] = sequentialPhoto;
+        savedMap[month] = randomPhoto;
 
         localStorage.setItem(
             "monthPhotoMap",
