@@ -38,10 +38,11 @@ function getMonthPhoto(month) {
 
     if (!savedMap[month]) {
 
-        const randomPhoto =
-            photos[Math.floor(Math.random() * photos.length)];
+        // Use sequential assignment: each month gets the next photo in sequence
+        const photoIndex = month % photos.length;
+        const sequentialPhoto = photos[photoIndex];
 
-        savedMap[month] = randomPhoto;
+        savedMap[month] = sequentialPhoto;
 
         localStorage.setItem(
             "monthPhotoMap",
@@ -158,6 +159,12 @@ function renderCalendar(date, quotes) {
         div.classList.add("date");
 
         div.textContent = day;
+
+        // Add 'sunday' class if this is a Sunday (first column, day % 7 == 0 in grid)
+        const dayOfWeek = (firstDay + day - 1) % 7;
+        if (dayOfWeek === 0) {
+            div.classList.add("sunday");
+        }
 
         if (
             day === today.getDate() &&
