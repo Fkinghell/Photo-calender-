@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  color: white;
+}
+
+#background {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.8s ease;
+  animation: zoomEffect 30s infinite alternate;
+}
+
+.calendar-container {
+  position: relative;
+  z-index: 2;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.days,
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+
+.days {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.date {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.today {
+  background: rgba(255,255,255,0.35);
+  font-weight: bold;
+}
+
+#quote {
+  margin-top: 25px;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@keyframes zoomEffect {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
