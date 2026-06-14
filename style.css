@@ -70,6 +70,9 @@ body {
     align-items: center;
 
     padding: 18px;
+
+    position: relative;
+    z-index: 5;
 }
 
 /* MODERN GLASS */
@@ -274,7 +277,7 @@ body {
 
     border-radius: 50%;
 
-    z-index: -1;
+    z-index: 3;
 
     box-shadow: 0 0 10px white;
 
@@ -306,7 +309,7 @@ body {
 
     pointer-events: none;
 
-    z-index: 1;
+    z-index: 4;
 
     filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.6));
     will-change: transform;
@@ -345,7 +348,7 @@ body {
 
     pointer-events: none;
 
-    z-index: 0;
+    z-index: 4;
 
     filter: drop-shadow(0 0 6px rgba(200, 150, 100, 0.5));
     will-change: transform;
@@ -378,7 +381,7 @@ body {
 
     pointer-events: none;
 
-    z-index: 2;
+    z-index: 6;
 
     animation: blushingHeart 4s infinite ease-in-out;
     filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.8));
