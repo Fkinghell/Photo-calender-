@@ -19,11 +19,14 @@ body{
 
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
 
     z-index:-3;
 
-    animation:zoomBackground 35s ease-in-out infinite alternate;
+    animation:zoomBackground 45s ease-in-out infinite alternate;
 }
+
+/* LIGHTER OVERLAY */
 
 #overlay{
     position:fixed;
@@ -32,9 +35,9 @@ body{
     background:
     linear-gradient(
         to bottom,
-        rgba(0,0,0,.30),
         rgba(0,0,0,.15),
-        rgba(0,0,0,.45)
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.20)
     );
 
     z-index:-2;
@@ -43,7 +46,6 @@ body{
 /* APP */
 
 .app{
-
     min-height:100vh;
 
     display:flex;
@@ -52,42 +54,42 @@ body{
     justify-content:center;
     align-items:center;
 
-    padding:20px;
+    padding:16px;
 }
 
-/* GLASS */
+/* SUBTLE GLASS */
 
 .glass{
+    background:rgba(255,255,255,.03);
 
-    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
 
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.12);
 
-    border:1px solid rgba(255,255,255,.18);
+    border-radius:24px;
 
     box-shadow:
-    0 8px 30px rgba(0,0,0,.25);
-
-    border-radius:28px;
+    0 4px 20px rgba(0,0,0,.12);
 }
 
 /* MONTH */
 
 .month-wrapper{
+    padding:12px 24px;
 
-    padding:14px 28px;
+    margin-bottom:14px;
 
-    margin-bottom:18px;
-
-    animation:floatPanel 6s ease-in-out infinite;
+    animation:floatPanel 8s ease-in-out infinite;
 }
 
 #monthYear{
-
     font-size:2rem;
     font-weight:300;
     letter-spacing:1px;
+
+    text-shadow:
+    0 2px 12px rgba(0,0,0,.5);
 }
 
 /* CALENDAR */
@@ -97,7 +99,16 @@ body{
     width:100%;
     max-width:700px;
 
-    padding:20px;
+    background:rgba(255,255,255,.025);
+
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:24px;
+
+    padding:18px;
 }
 
 .weekdays,
@@ -111,9 +122,12 @@ body{
 
 .weekdays{
 
-    margin-bottom:14px;
+    margin-bottom:10px;
 
     font-weight:600;
+
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.5);
 }
 
 .weekdays div{
@@ -127,12 +141,15 @@ body{
     font-size:1.05rem;
 
     text-shadow:
-    0 2px 8px rgba(0,0,0,.8);
+    0 2px 6px rgba(0,0,0,.6);
 }
+
+/* TODAY */
 
 .today{
 
     position:relative;
+
     font-weight:700;
 }
 
@@ -142,8 +159,8 @@ body{
 
     position:absolute;
 
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
@@ -155,41 +172,46 @@ body{
     transform:translateX(-50%);
 
     box-shadow:
-    0 0 10px white;
+    0 0 8px rgba(255,255,255,.8);
 }
 
 /* QUOTE */
 
 .quote-wrapper{
 
-    margin-top:18px;
+    margin-top:16px;
 
-    padding-top:18px;
+    padding-top:14px;
 
     border-top:
-    1px solid rgba(255,255,255,.15);
+    1px solid rgba(255,255,255,.12);
 
     text-align:center;
 }
 
 #quote{
 
-    font-size:1.05rem;
+    font-size:1rem;
 
     font-style:italic;
 
     line-height:1.6;
+
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.4);
 }
 
 #author{
 
     display:block;
 
-    margin-top:10px;
+    margin-top:8px;
 
     opacity:.85;
 
-    letter-spacing:1px;
+    font-size:.92rem;
+
+    letter-spacing:.5px;
 }
 
 /* STARS */
@@ -198,8 +220,8 @@ body{
 
     position:fixed;
 
-    width:4px;
-    height:4px;
+    width:3px;
+    height:3px;
 
     background:white;
 
@@ -207,21 +229,23 @@ body{
 
     z-index:-1;
 
-    animation:twinkle 3s infinite alternate;
+    opacity:.5;
+
+    animation:twinkle 4s infinite alternate;
 }
 
 .star1{
-    top:12%;
-    left:18%;
+    top:15%;
+    left:15%;
 }
 
 .star2{
-    top:22%;
-    right:15%;
+    top:25%;
+    right:20%;
 }
 
 .star3{
-    top:35%;
+    top:40%;
     left:75%;
 }
 
@@ -231,9 +255,9 @@ body{
 
     position:fixed;
 
-    color:rgba(255,255,255,.6);
+    color:rgba(255,255,255,.35);
 
-    font-size:14px;
+    font-size:12px;
 
     pointer-events:none;
 
@@ -243,25 +267,25 @@ body{
 .butterfly1{
     top:20%;
     left:8%;
-    animation:fly1 16s infinite alternate;
+    animation:fly1 18s infinite alternate;
 }
 
 .butterfly2{
     top:55%;
     right:10%;
-    animation:fly2 20s infinite alternate;
+    animation:fly2 24s infinite alternate;
 }
 
 .butterfly3{
     top:75%;
     left:15%;
-    animation:fly3 18s infinite alternate;
+    animation:fly3 20s infinite alternate;
 }
 
 .butterfly4{
     top:30%;
     right:25%;
-    animation:fly4 22s infinite alternate;
+    animation:fly4 26s infinite alternate;
 }
 
 /* ANIMATIONS */
@@ -273,7 +297,7 @@ body{
     }
 
     to{
-        transform:scale(1.05);
+        transform:scale(1.03);
     }
 }
 
@@ -284,7 +308,7 @@ body{
     }
 
     to{
-        opacity:.8;
+        opacity:.7;
     }
 }
 
@@ -295,27 +319,42 @@ body{
     }
 
     50%{
-        transform:translateY(-4px);
+        transform:translateY(-3px);
     }
 }
 
 @keyframes fly1{
     from{transform:translate(0,0);}
-    to{transform:translate(50px,-30px);}
+    to{transform:translate(40px,-25px);}
 }
 
 @keyframes fly2{
     from{transform:translate(0,0);}
-    to{transform:translate(-40px,25px);}
+    to{transform:translate(-35px,20px);}
 }
 
 @keyframes fly3{
     from{transform:translate(0,0);}
-    to{transform:translate(60px,-20px);}
+    to{transform:translate(50px,-15px);}
 }
 
 @keyframes fly4{
     from{transform:translate(0,0);}
-    to{transform:translate(-35px,-25px);}
+    to{transform:translate(-25px,-20px);}
+}
+
+@media (min-width:768px){
+
+    #monthYear{
+        font-size:2.6rem;
+    }
+
+    .date{
+        font-size:1.2rem;
+    }
+
+    #quote{
+        font-size:1.15rem;
+    }
 }
 ```
